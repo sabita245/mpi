@@ -1,0 +1,15 @@
+syntax = "proto3";
+	
+message GetFileMetaDataRequest{
+    string file = 1;   // file name for which meta data is required
+}
+
+message GetFileMetaDataResponse{
+	string peer_ip_address = 1;  // Peer IP address on which file exists
+	int32 peer_port = 2;         // Peer port number
+}
+
+service Metadata{
+	// Gets meta data for given file. Throws error if file is not found
+    rpc GetFileMetaData(GetFileMetaDataRequest) returns (GetFileMetaDataResponse);
+}

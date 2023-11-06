@@ -1,0 +1,14 @@
+syntax = "proto3";
+	
+message GetFileDataRequest{
+    string file = 1;  // File name for which data is required
+}
+
+message GetFileDataResponse{
+	bytes file_content = 1; // File content
+}
+
+service Data{
+	// Gets the content of given file. Throws error if file not found
+    rpc GetFileData(GetFileDataRequest) returns (GetFileDataResponse);
+}
